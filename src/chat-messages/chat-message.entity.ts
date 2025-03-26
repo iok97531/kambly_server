@@ -1,24 +1,18 @@
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
-export class User {
+export class ChatMessage {
   @PrimaryGeneratedColumn()
   id: number;
 
   @Column()
-  userName: string;
+  fromUserId: number;
 
   @Column()
-  password: string;
+  toUserId: number;
 
   @Column()
-  firstName: string;
-
-  @Column()
-  lastName: string;
-
-  @Column()
-  userTyle: string;
+  message: string;
 
   @Column()
   createdAt: Date;

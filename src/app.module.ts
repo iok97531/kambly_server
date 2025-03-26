@@ -5,8 +5,11 @@ import { ChatMessagesModule } from './chat-messages/chat-messages.module';
 import { VideosModule } from './videos/videos.module';
 import { UsersModule } from './users/users.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { User } from './users/user.entity';
 import { ConfigModule } from '@nestjs/config';
+
+import { User } from './users/user.entity';
+import { ChatMessage } from './chat-messages/chat-message.entity';
+import { AuthModule } from './auth/auth.module';
 
 console.log(process.env)
 @Module({
@@ -23,12 +26,13 @@ console.log(process.env)
       username: process.env.DB_USERNAME,
       password: process.env.DB_PASSWORD,
       database: process.env.DB_NAME,
-      entities: [User],
+      entities: [User, ChatMessage],
       synchronize: true,
     }),
     ChatMessagesModule,
     VideosModule,
     UsersModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
